@@ -1,43 +1,74 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Habib</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>habib</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    body {
       height: 100vh;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #fff;
-      font-family: 'Tahoma', sans-serif;
+      background: linear-gradient(-45deg, #1e3c72, #2a5298, #1e3c72, #2a5298);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
+      font-family: 'Cairo', sans-serif;
+      color: white;
       text-align: center;
       padding: 20px;
     }
-    h1 {
-      font-size: 60px;
+
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 40px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.3);
+      max-width: 600px;
+    }
+
+    .card h1 {
+      font-size: 3.5em;
       margin-bottom: 20px;
       color: #ffcc00;
       text-shadow: 2px 2px 10px #000;
+      animation: bounce 2s infinite;
     }
-    p {
-      font-size: 22px;
-      max-width: 600px;
-      line-height: 1.6;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+
+    .card p {
+      font-size: 1.4em;
+      line-height: 1.7;
+      color: #f0f0f0;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
     }
   </style>
 </head>
 <body>
-  <h1>habib</h1>
-  <p>يادرى طقت ننشر موقع. هادي هي لي كنتي باغيا ديرها ولا ولا حاجة وخدوخرا.</p>
+  <div class="card">
+    <h1>habib</h1>
+    <p>يادرى طقت ننشر موقع. هادي هي لي كنتي باغيا ديرها ولا حاجة وخدوخرا.</p>
+  </div>
 </body>
 </html>
