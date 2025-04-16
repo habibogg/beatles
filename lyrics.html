@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yesterday - Lyrics</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(120deg, #ece9e6, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+      padding: 2rem;
+    }
+    .lyrics-container {
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .lyrics-container h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+    .lyrics-container p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    /* Optional: auto-scroll effect */
+    .auto-scroll {
+      max-height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+    .auto-scroll p {
+      transition: transform 1s linear;
+    }
+    button {
+      display: block;
+      margin: 1rem auto 0;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      background: #007bff;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+  <div class="lyrics-container">
+    <h1>Yesterday</h1>
+    <div id="lyrics" class="auto-scroll">
+      <p>Yesterday, all my troubles seemed so far away<br>
+      Now it looks as though they're here to stay<br>
+      Oh, I believe in yesterday</p>
+
+      <p>Suddenly, I'm not half the man I used to be<br>
+      There's a shadow hanging over me<br>
+      Oh, yesterday came suddenly</p>
+
+      <p>Why she had to go I don't know, she wouldn't say<br>
+      I said something wrong, now I long for yesterday</p>
+
+      <p>Yesterday, love was such an easy game to play<br>
+      Now I need a place to hide away<br>
+      Oh, I believe in yesterday</p>
+
+      <p>Why she had to go I don't know, she wouldn't say<br>
+      I said something wrong, now I long for yesterday</p>
+
+      <p>Yesterday, love was such an easy game to play<br>
+      Now I need a place to hide away<br>
+      Oh, I believe in yesterday, mm</p>
+    </div>
+    <button id="playBtn">تشغيل التمرير التلقائي</button>
+  </div>
+
+  <script>
+    const btn = document.getElementById('playBtn');
+    const lyricsDiv = document.getElementById('lyrics');
+    let interval;
+    btn.addEventListener('click', () => {
+      if (btn.textContent.includes('تشغيل')) {
+        btn.textContent = 'إيقاف التمرير';
+        let scrollPos = 0;
+        interval = setInterval(() => {
+          scrollPos += 1;
+          lyricsDiv.scrollTop = scrollPos;
+          if (scrollPos >= lyricsDiv.scrollHeight - lyricsDiv.clientHeight) {
+            clearInterval(interval);
+            btn.textContent = 'إعادة التشغيل';
+          }
+        }, 100);
+      } else if (btn.textContent.includes('إيقاف')) {
+        clearInterval(interval);
+        btn.textContent = 'تشغيل التمرير التلقائي';
+      } else {
+        lyricsDiv.scrollTop = 0;
+        btn.textContent = 'إيقاف التمرير';
+      }
+    });
+  </script>
+</body>
+</html>
